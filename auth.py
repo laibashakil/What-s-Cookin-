@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 
 # Firebase setup
 if not firebase_admin._apps:
-    # Load Firebase credentials from Streamlit secrets
-    firebase_credentials = json.loads(st.secrets["firebase_credentials"])
+    # Load Firebase credentials directly from Streamlit secrets
+    firebase_credentials = st.secrets["firebase_credentials"]
     cred = credentials.Certificate(firebase_credentials)
     firebase_admin.initialize_app(cred)
 
