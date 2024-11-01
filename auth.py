@@ -7,13 +7,14 @@ import matplotlib.pyplot as plt
 
 # Firebase setup
 if not firebase_admin._apps:
-    # Load Firebase credentials directly from Streamlit secrets
-    firebase_credentials = st.secrets["firebase_credentials"]
+    # Convert the Streamlit secrets entry to a dictionary
+    firebase_credentials = dict(st.secrets["firebase_credentials"])
     cred = credentials.Certificate(firebase_credentials)
     firebase_admin.initialize_app(cred)
 
 # Initialize Firestore
 db = firestore.client()
+
 
 # Load the cleaned dataset (for Recipe Finder)
 df = pd.read_csv('cleaned_recipes.csv')
